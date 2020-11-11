@@ -1,0 +1,31 @@
+<h1>See all our beautiful flats !</h1>
+
+<div class="header">
+<h3>Simple Airbnb</h1>
+<%= link_to "Add a flat", new_flat_path, class:"btn btn-primary" %>
+</div>
+<div class="cards">
+  <% @flats.each do |flat| %>
+    <div class="description">
+      <div class="name">
+        <h2><%= flat.name %></h3>
+      </div>
+      <div class="address">
+        <p><%= flat.address %></p>
+      </div>
+      <div class="icons">
+        <i class="fas fa-user-friends"><%= flat.number_of_guest %></i>
+        <i class="fas fa-euro-sign"></i><%= flat.price_per_night %></i>
+      </div>
+      <div class="actions">
+        <%= link_to "More infos", flat_path(flat.id), class:"text-success" %>
+        <%= link_to "Update", edit_flat_path(flat.id), class:"text-warning" %>
+        <%= link_to "Delete", flat_path(flat.id), method: :delete, data: {confirm: "Are you sure?"}, class:"text-danger" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<%= @url %>
+
+<img src="<%= @url %>" alt="">
